@@ -1,0 +1,17 @@
+[
+    {
+        "name": "John Doe",
+        "email": "[EMAIL_ADDRESS]",
+        "photo_url": "https://randomuser.me/api/portraits/men/1.jpg"
+    },
+    {
+        "name": "Jane Doe",
+        "email": "[EMAIL_ADDRESS]",
+        "photo_url": "https://randomuser.me/api/portraits/women/1.jpg"
+    },
+    {
+        "name": "Michael Lee",
+        "email": "[EMAIL_ADDRESS]",
+        "photo_url": "https://randomuser.me/api/portraits/men/2.jpg"
+    }
+]
