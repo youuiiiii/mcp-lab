@@ -3,7 +3,7 @@ import { Button, Text, View } from "react-native";
 import { Avatar } from "react-native-paper";
 import styles from "./AppStyles";
 
-export default function profile() {
+export default function Profile() {
   const { userName, userEmail, userPhoto } = useLocalSearchParams<{
     userName: string;
     userEmail: string;
