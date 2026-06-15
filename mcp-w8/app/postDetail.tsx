@@ -1,5 +1,5 @@
 import { useLocalSearchParams } from "expo-router";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   ActivityIndicator,
   ScrollView,
@@ -45,13 +45,7 @@ export default function PostDetail() {
   const [comments, setComments] = useState<Comment[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    if (id && userId) {
-      getDetailData();
-    }
-  }, [id, userId]);
-
-  const getDetailData = async () => {
+  const getDetailData = useCallback(async () => {
     try {
       const postId = Number(id);
       const postUserId = Number(userId);
@@ -87,7 +81,13 @@ export default function PostDetail() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [id, userId]);
+
+  useEffect(() => {
+    if (id && userId) {
+      getDetailData();
+    }
+  }, [getDetailData, id, userId]);
 
   if (loading) {
     return (
