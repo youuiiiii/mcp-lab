@@ -12,9 +12,9 @@
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
     "@react-navigation/native": "^7.1.8",
-    "@supabase/supabase-js": "^2.86.2",
+    "@supabase/supabase-js": "^2.108.1",
     "expo": "~54.0.33",
-    "expo-camera": "~17.0.11",
+    "expo-camera": "~17.0.10",
     "expo-file-system": "~19.0.20",
     "expo-image-picker": "~17.0.10",
     "expo-location": "~19.0.7",

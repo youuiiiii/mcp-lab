@@ -3,7 +3,7 @@ import * as FileSystem from "expo-file-system/legacy";
 import * as ImagePicker from "expo-image-picker";
 import * as Location from "expo-location";
 import * as Notifications from "expo-notifications";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   Alert,
   Button,
@@ -98,7 +98,7 @@ export default function Index() {
     failureRef.current = failureCount;
   }, [successCount, failureCount]);
 
-  const recordSuccess = (message: string): CounterSnapshot => {
+  const recordSuccess = useCallback((message: string): CounterSnapshot => {
     const next = {
       success: successRef.current + 1,
       failure: failureRef.current,
@@ -107,9 +107,9 @@ export default function Index() {
     successRef.current = next.success;
     dispatch(addSuccess(message));
     return next;
-  };
+  }, [dispatch]);
 
-  const recordFailure = (message: string): CounterSnapshot => {
+  const recordFailure = useCallback((message: string): CounterSnapshot => {
     const next = {
       success: successRef.current,
       failure: failureRef.current + 1,
@@ -118,7 +118,7 @@ export default function Index() {
     failureRef.current = next.failure;
     dispatch(addFailure(message));
     return next;
-  };
+  }, [dispatch]);
 
   useEffect(() => {
     registerForPushNotificationsAsync()
@@ -131,7 +131,7 @@ export default function Index() {
         setExpoPushToken(message);
         recordFailure(`FCM push token failed: ${message}`);
       });
-  }, []);
+  }, [recordFailure, recordSuccess]);
 
   const showUploadNotification = async (
     title: string,
